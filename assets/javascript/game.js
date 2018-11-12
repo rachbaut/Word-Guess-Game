@@ -7,3 +7,10 @@ var getRandomWord = function(array) {
 
 var randomWord = getRandomWord(officeWords);
 console.log('officeWords', officeWords);
+
+//this is like the on click to hear for keys pressed
+textForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+	
+	var counter = 10; 
+	
