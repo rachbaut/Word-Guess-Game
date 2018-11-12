@@ -1,0 +1,41 @@
+/* Header + Body Background Styles */
+
+body {
+	background-color: lightgray;
+}
+
+img {
+	margin: auto;
+	display: block;
+	padding-top: 35px;
+}
+
+h2 {
+	text-align: right;
+	font-size: 45px;
+	color:#231FD3;
+	font-family: 'Permanent Marker', cursive;
+	padding-right: 220px;
+}
+
+/* only paragraph styling */
+p {
+	font-family: 'Roboto', sans-serif;
+	font-size: 35px;
+	text-align: center;
+	padding-top: 20px;
+	letter-spacing: 1px;
+	word-spacing: 3px;
+}
+
+#clear {
+	margin: auto;	
+	display: block;
+	background-color: #231FD3;
+	color: white;
+	padding: 10px 15px;	
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 1px;
+}
+
