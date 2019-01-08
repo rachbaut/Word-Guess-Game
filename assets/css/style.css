@@ -23,9 +23,14 @@ p {
 	font-family: 'Roboto', sans-serif;
 	font-size: 35px;
 	text-align: center;
-	padding-top: 20px;
+	margin-top: 60px;
 	letter-spacing: 1px;
 	word-spacing: 3px;
+}
+#hold {
+	text-align: center;
+	font-size: 55px;
+	margin: 55px;
 }
 
 #clear {
@@ -38,4 +43,17 @@ p {
 	font-family: 'Roboto', sans-serif;
 	letter-spacing: 1px;
 }
+#win-counter {
+	text-align: center;
+	font-size: 30px;
+	margin-top: 25px;
+	color: #231FD3;
+}
 
+#lose-counter {
+	text-align: center;
+	font-size: 30px;
+	margin-top: 25px;
+	color: #231FD3;
+	margin-bottom: 80px;
+}

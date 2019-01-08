@@ -34,7 +34,7 @@ function gameStart() {
 	numBlank = lettersInWordChoice.length;
 
 	//we print the solution in console (to test)
-	console.log(wordChoice); //did not see anything really happen not sure what to expect here
+	// console //did not see anything really happen not sure what to expect here
 
 	//IMPORTANT here we reset the guess and success array after the each game
 	blankAndSolution = [];
@@ -48,10 +48,99 @@ function gameStart() {
 	}
 
 	//test in console 
-	console.logI(blankAndSolution);
+	// console.logI(blankAndSolution); //yea need to figure this out how to test it on console
 
-	
-	
+	//reprints the guesses left in HTML
+	document.getElementById("myguesses").innerHTML = guesses;
+	//reprints the blanks at the beginning of each game in HTML
+	document.getElementById("hold").innerHTML = blankAndSolution.join(" ");
 
+	//clears the wrong guesses from previous game
+	document.getElementById("clear").innerHTML = wrongGuesses.join(" ");
+
+} 
+ 
+function checkLetters(letter) {
+	
+	//this boolean will check if there is a letter in that word or not
+	var letterCheck = false;
+
+	//check if letter exists in array 
+	for (var i = 0; i < numBlank; i++) {
+		if(wordChoice[i] === letter) {
+			letterCheck = true;
+		}
+	}
+	// if the letter is somewhere within word then it will figure out where
+	if (letterCheck) {
+
+		//loop through the word
+		for (var j = 0; j < numBlank; j++) {
+			//this puts together the blankAndSolution 
+			if (wordChoice[j] === letter) {
+				//set the exact soace in blanks and letter that equals letter when match
+				blankAndSolution[j] = letter;
+			}
+		}
+		//testing
+		// console.log(blankAndSolution);
+	}
+	//if letter does not exist 
+	else {
+		//then we add the letter to list of wrong letters and - a guess
+		wrongGuesses.push(letter);
+		guesses--;
+	}
+}
+//this is the roundComplete() function
+//this code will run after user makes each guess
+
+function roundComplete() {
+
+	//first we need to log in beginning status in console telling us wins, losses, & guesses left
+	// console.log("WinCount: " + win + " | LossCount: " + loss + " | NumGuesses: " + guesses);
+
+//update
+document.getElementById("myguesses").innerHTML = guesses;
+document.getElementById("hold").innerHTML = blankAndSolution.join(" ");
+document.getElementById("clear").innerHTML = wrongGuesses.join(" ");
+
+//if we all letters match solution 
+if(lettersInWordChoice.toString() === blankAndSolution.toString()) {
+	//add the win counter and let user know
+
+	win++;
+	alert("YOU WIN!!");
+
+	//update win counter in HTML and will restart game
+	document.getElementById("win-counter").innerHTML = win;
+	gameStart();
+}
+//if no more guesses left
+else if (guesses === 0) {
+	//add the lose counter
+	lose++;
+	alert("Dun dun dun, you lose");
+
+	//update loss counter in HTML
+	document.getElementById("lose-counter").innerHTML = lose;
+	//restart game
+	gameStart();
+	}
 
 }
+
+//MAIN STUFFF this code is what runs the game
+
+//start game by running the startGame() function
+gameStart();
+
+//initiate function for grabbing key clicks
+document.onkeyup = function(event) {
+	//makes all key clicks to lowercase in case they have caps lock
+	var letterGuessed = String.fromCharCode(event.which).toLowerCase();
+	//runs code to check for correct stuff
+	checkLetters(letterGuessed);
+	//runs code after each game
+	roundComplete();
+};
